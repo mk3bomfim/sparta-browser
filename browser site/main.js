@@ -66,7 +66,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const platformBtns = document.querySelectorAll('.btn-dl-platform');
   platformBtns.forEach(btn => {
     btn.addEventListener('click', (e) => {
-      e.preventDefault();
       const platform = btn.getAttribute('data-platform');
       showDownloadToast(platform);
     });
