@@ -1,0 +1,93 @@
+{
+  "browser": {
+    "title": "SpartaBrowser",
+    "newTab": "Nova guia",
+    "search": "buscar ou entrar"
+  },
+  "navigation": {
+    "back": "Voltar",
+    "forward": "Avançar",
+    "reload": "Recarregar",
+    "home": "Início"
+  },
+  "menu": {
+    "menu": "Menu",
+    "newTab": "Nova guia",
+    "closeTab": "Fechar guia",
+    "torMode": "Modo Tor",
+    "zoomIn": "Aumentar zoom",
+    "zoomOut": "Diminuir zoom",
+    "zoomReset": "Redefinir zoom",
+    "fullscreen": "Tela cheia",
+    "devTools": "Ferramentas do desenvolvedor",
+    "settings": "Configurações",
+    "newPrivateTab": "Nova guia privada"
+  },
+  "settings": {
+    "title": "Configurações",
+    "appearance": "Aparência",
+    "language": "Idioma",
+    "languageDesc": "Idioma da interface do navegador",
+    "theme": "Tema",
+    "themeDesc": "Escolha entre tema claro ou escuro",
+    "themeDark": "Escuro",
+    "themeLight": "Claro",
+    "privacy": "Privacidade",
+    "clearOnExit": "Limpar ao fechar",
+    "clearOnExitDesc": "Limpa cache e histórico ao fechar o navegador",
+    "dnt": "Do Not Track (DNT)",
+    "dntDesc": "Envia header DNT em todas as requisições",
+    "adBlock": "Bloqueador de Anúncios (AdBlock)",
+    "adBlockDesc": "Bloquear anúncios e rastreadores conhecidos de terceiros",
+    "searchEngine": "Motor de Busca",
+    "searchEngineDefault": "Padrão",
+    "searchEngineDesc": "Motor usado na barra de endereços",
+    "tor": "Tor",
+    "torPort": "Porta SOCKS",
+    "torPortDesc": "Porta local do proxy Tor (padrão: 9150)",
+    "advanced": "Avançado",
+    "hardwareAccel": "Hardware Acceleration",
+    "hardwareAccelDesc": "Requer reinicialização",
+    "save": "Salvar",
+    "reset": "Restaurar Padrões",
+    "resetConfirm": "Restaurar todas as configurações para os valores padrão?"
+  },
+  "history": {
+    "title": "Histórico",
+    "empty": "Nenhum histórico nesta sessão",
+    "clearAll": "Limpar Tudo",
+    "delete": "Remover do histórico"
+  },
+  "bookmarks": {
+    "title": "Favoritos",
+    "panelTitle": "Favoritos",
+    "empty": "Nenhum favorito adicionado",
+    "delete": "Remover dos favoritos"
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "Nenhum download nesta sessão",
+    "completed": "Concluído",
+    "downloading": "Baixando",
+    "cancelled": "Cancelado",
+    "waiting": "Aguardando"
+  },
+  "tor": {
+    "disabled": "Desativado",
+    "connecting": "Conectando...",
+    "connected": "Conectado",
+    "status": "Status",
+    "ip": "Seu IP",
+    "location": "Localização",
+    "circuit": "Circuito",
+    "notFound": "Tor não encontrado. Execute: npm run download-tor",
+    "ready": "Tor conectado!",
+    "error": "Erro ao iniciar Tor"
+  },
+  "window": {
+    "minimize": "Minimizar",
+    "maximize": "Maximizar",
+    "close": "Fechar",
+    "clearSession": "Limpar sessão"
+  }
+}
