@@ -1,0 +1,23 @@
+{
+  "name": "sparta-browser",
+  "version": "0.1.0",
+  "description": "SpartaBrowser - minimal browser.",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "download-tor": "node download-tor.js",
+    "postinstall": "node download-tor.js",
+    "build": "electron-packager . SpartaBrowser --platform=win32 --arch=x64 --out=dist --overwrite"
+  },
+  "keywords": [
+    "browser",
+    "electron",
+    "opsec"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^43.0.0",
+    "electron-packager": "^17.1.2"
+  }
+}
