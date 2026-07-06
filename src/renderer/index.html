@@ -1,0 +1,395 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SpartaBrowser</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- Google Fonts for premium typography: Jacquard 12 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jacquard+12&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <header class="chrome">
+      <section class="brand" aria-label="SpartaBrowser">
+        <span class="mark">S</span>
+        <span class="name">sparta</span>
+      </section>
+
+      <nav class="tools" aria-label="Navegacao">
+        <button id="back" class="icon" type="button" title="Voltar"><span class="material-symbols-outlined">arrow_back</span></button>
+        <button id="forward" class="icon" type="button" title="Avancar"><span class="material-symbols-outlined">arrow_forward</span></button>
+        <button id="reload" class="icon" type="button" title="Recarregar"><span class="material-symbols-outlined">refresh</span></button>
+        <button id="home" class="icon" type="button" title="Inicio"><span class="material-symbols-outlined">home</span></button>
+      </nav>
+
+      <form id="bar" class="address" spellcheck="false">
+        <input id="url" autocomplete="off" autocapitalize="off" placeholder="buscar ou entrar" />
+        <button id="bookmarkToggle" class="address-bar-btn" type="button" title="Adicionar aos favoritos">
+          <span class="material-symbols-outlined">star_border</span>
+        </button>
+      </form>
+
+      <nav class="tools right" aria-label="Janela">
+        <button id="torButton" class="icon" type="button" title="Modo Tor (Desativado)">
+          <span class="material-symbols-outlined">shield</span>
+        </button>
+
+        <button id="menuButton" class="icon" type="button" title="Menu (Alt+F)"><span class="material-symbols-outlined">more_vert</span></button>
+        <button id="themeButton" class="icon" type="button" title="Tema preto"><span class="material-symbols-outlined">dark_mode</span></button>
+        <button id="bookmarksButton" class="icon" type="button" title="Favoritos" data-i18n-title="bookmarks.title"><span class="material-symbols-outlined">star</span></button>
+        <button id="historyButton" class="icon" type="button" title="Historico"><span class="material-symbols-outlined">history</span></button>
+        <button id="downloadsButton" class="icon" type="button" title="Downloads"><span class="material-symbols-outlined">download</span></button>
+        <button id="settingsButton" class="icon" type="button" title="Configurações" data-i18n-title="settings.title"><span class="material-symbols-outlined">settings</span></button>
+        <button id="purge" class="icon" type="button" title="Limpar sessao"><span class="material-symbols-outlined">delete_sweep</span></button>
+        <button id="minimize" class="icon" type="button" title="Minimizar"><span class="material-symbols-outlined">remove</span></button>
+        <button id="maximize" class="icon" type="button" title="Maximizar"><span class="material-symbols-outlined">crop_square</span></button>
+        <button id="close" class="icon close" type="button" title="Fechar"><span class="material-symbols-outlined">close</span></button>
+      </nav>
+    </header>
+
+    <div class="tabs-bar">
+      <div id="tabsList" class="tabs-list"></div>
+      <button id="newTab" class="icon new-tab" type="button" title="Nova guia (Ctrl+T)"><span class="material-symbols-outlined">add</span></button>
+    </div>
+
+    <main id="panel" class="panel">
+      <section id="bookmarksPanel" class="panel-view">
+        <div class="panel-head">
+          <h1 data-i18n="bookmarks.panelTitle">Favoritos</h1>
+          <button id="closePanelBookmarks" class="icon" type="button" title="Fechar"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <ol id="bookmarksList" class="list"></ol>
+      </section>
+
+      <section id="historyPanel" class="panel-view">
+        <div class="panel-head">
+          <h1>Historico</h1>
+          <button id="clearHistory" class="text" type="button">Limpar Tudo</button>
+          <button id="closePanelHistory" class="icon" type="button" title="Fechar"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <ol id="historyList" class="list"></ol>
+      </section>
+
+      <section id="downloadsPanel" class="panel-view">
+        <div class="panel-head">
+          <h1>Downloads</h1>
+          <button id="closePanelDownloads" class="icon" type="button" title="Fechar"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <ol id="downloadsList" class="list"></ol>
+      </section>
+
+      <section id="menuPanel" class="panel-view menu-panel">
+        <div class="menu-list">
+          <button id="menuNewTab" class="menu-item" type="button">
+            <span class="material-symbols-outlined">add</span>
+            <span data-i18n="menu.newTab">Nova guia</span>
+            <span class="shortcut">Ctrl+T</span>
+          </button>
+          <button id="menuNewPrivateTab" class="menu-item private-tab" type="button">
+            <span class="material-symbols-outlined">visibility_off</span>
+            <span data-i18n="menu.newPrivateTab">Nova guia privada</span>
+            <span class="shortcut">Ctrl+Shift+P</span>
+          </button>
+          <button id="menuCloseTab" class="menu-item" type="button">
+            <span class="material-symbols-outlined">close</span>
+            <span data-i18n="menu.closeTab">Fechar guia</span>
+            <span class="shortcut">Ctrl+W</span>
+          </button>
+          <div class="menu-separator"></div>
+          <button id="menuTorToggle" class="menu-item" type="button">
+            <span class="material-symbols-outlined">shield</span>
+            <span data-i18n="menu.torMode">Modo Tor</span>
+            <span class="shortcut">Desativado</span>
+          </button>
+          <div class="menu-separator"></div>
+          <button id="menuZoomIn" class="menu-item" type="button">
+            <span class="material-symbols-outlined">add</span>
+            <span data-i18n="menu.zoomIn">Aumentar zoom</span>
+            <span class="shortcut">Ctrl++</span>
+          </button>
+          <button id="menuZoomOut" class="menu-item" type="button">
+            <span class="material-symbols-outlined">remove</span>
+            <span data-i18n="menu.zoomOut">Diminuir zoom</span>
+            <span class="shortcut">Ctrl+-</span>
+          </button>
+          <button id="menuZoomReset" class="menu-item" type="button">
+            <span class="material-symbols-outlined">zoom_out_map</span>
+            <span data-i18n="menu.zoomReset">Redefinir zoom</span>
+            <span class="shortcut">Ctrl+0</span>
+          </button>
+          <div class="menu-separator"></div>
+          <button id="menuFullscreen" class="menu-item" type="button">
+            <span class="material-symbols-outlined">fullscreen</span>
+            <span data-i18n="menu.fullscreen">Tela cheia</span>
+            <span class="shortcut">F11</span>
+          </button>
+          <button id="menuDevTools" class="menu-item" type="button">
+            <span class="material-symbols-outlined">code</span>
+            <span data-i18n="menu.devTools">Ferramentas do desenvolvedor</span>
+            <span class="shortcut">F12</span>
+          </button>
+          <div class="menu-separator"></div>
+          <button id="menuHistory" class="menu-item" type="button">
+            <span class="material-symbols-outlined">history</span>
+            <span data-i18n="history.title">Histórico</span>
+            <span class="shortcut"></span>
+          </button>
+          <button id="menuDownloads" class="menu-item" type="button">
+            <span class="material-symbols-outlined">download</span>
+            <span data-i18n="downloads.title">Downloads</span>
+            <span class="shortcut"></span>
+          </button>
+          <div class="menu-separator"></div>
+          <div class="menu-item">
+            <span class="material-symbols-outlined">language</span>
+            <span data-i18n="settings.language">Idioma</span>
+            <select id="menuLanguage" class="menu-select">
+              <option value="pt-BR">Português (Brasil)</option>
+              <option value="en-US">English (US)</option>
+              <option value="es-ES">Español</option>
+              <option value="fr-FR">Français</option>
+              <option value="de-DE">Deutsch</option>
+              <option value="it-IT">Italiano</option>
+              <option value="ru-RU">Русский</option>
+              <option value="zh-CN">中文 (简体)</option>
+              <option value="ja-JP">日本語</option>
+            </select>
+          </div>
+          <button id="menuSettings" class="menu-item" type="button">
+            <span class="material-symbols-outlined">settings</span>
+            <span data-i18n="menu.settings">Configurações</span>
+            <span class="shortcut"></span>
+          </button>
+        </div>
+      </section>
+
+      <section id="settingsPanel" class="panel-view settings-panel">
+        <div class="panel-head">
+          <h1>Configurações</h1>
+          <button id="closePanelSettings" class="icon" type="button" title="Fechar"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <div class="settings-content">
+          <div class="settings-section">
+            <h2>Aparência</h2>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Idioma</span>
+                <span class="setting-description">Idioma da interface do navegador</span>
+              </div>
+              <select id="settingLanguage" class="setting-select">
+                <option value="pt-BR">Português (Brasil)</option>
+                <option value="en-US">English (US)</option>
+                <option value="es-ES">Español</option>
+                <option value="fr-FR">Français</option>
+                <option value="de-DE">Deutsch</option>
+                <option value="it-IT">Italiano</option>
+                <option value="ru-RU">Русский</option>
+                <option value="zh-CN">中文 (简体)</option>
+                <option value="ja-JP">日本語</option>
+              </select>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Tema</span>
+                <span class="setting-description">Escolha entre tema claro ou escuro</span>
+              </div>
+              <select id="settingTheme" class="setting-select">
+                <option value="dark">Escuro</option>
+                <option value="white">Claro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Privacidade</h2>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Limpar ao fechar</span>
+                <span class="setting-description">Limpa cache e histórico ao fechar o navegador</span>
+              </div>
+              <label class="setting-toggle">
+                <input type="checkbox" id="settingClearOnExit" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Do Not Track (DNT)</span>
+                <span class="setting-description">Envia header DNT em todas as requisições</span>
+              </div>
+              <label class="setting-toggle">
+                <input type="checkbox" id="settingDNT" checked disabled>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">DNS Seguro (DoH)</span>
+                <span class="setting-description">Criptografa requisições DNS usando DNS over HTTPS (Requer reiniciar)</span>
+              </div>
+              <select id="settingSecureDns" class="setting-select">
+                <option value="off">Desativado</option>
+                <option value="cloudflare">Cloudflare (Seguro & Rápido)</option>
+                <option value="google">Google Public DNS</option>
+                <option value="quad9">Quad9 (Seguro & Privacidade)</option>
+              </select>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Bloqueador de Anúncios (AdBlock)</span>
+                <span class="setting-description">Bloquear anúncios e rastreadores conhecidos de terceiros</span>
+              </div>
+              <label class="setting-toggle">
+                <input type="checkbox" id="settingAdBlock" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">JavaScript</span>
+                <span class="setting-description">Permitir que sites executem scripts JavaScript (Recomendado)</span>
+              </div>
+              <label class="setting-toggle">
+                <input type="checkbox" id="settingJavaScript" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Limpar Dados de Navegação</span>
+                <span class="setting-description">Apagar imediatamente cookies, cache e histórico local de sessões</span>
+              </div>
+              <button id="settingsClearStorage" class="settings-button alert-btn" type="button">Deletar Cookies e Cache</button>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Motor de Busca</h2>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Padrão</span>
+                <span class="setting-description">Motor usado na barra de endereços</span>
+              </div>
+              <select id="settingSearchEngine" class="setting-select">
+                <option value="duckduckgo">DuckDuckGo</option>
+                <option value="google">Google</option>
+                <option value="bing">Bing</option>
+                <option value="startpage">Startpage</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Tor</h2>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Porta SOCKS</span>
+                <span class="setting-description">Porta local do proxy Tor (padrão: 9150)</span>
+              </div>
+              <input type="number" id="settingTorPort" class="setting-input" value="9150" min="1024" max="65535">
+            </div>
+          </div>
+
+          <div class="settings-section">
+            <h2>Avançado</h2>
+            <div class="setting-item">
+              <div class="setting-info">
+                <span class="setting-label">Hardware Acceleration</span>
+                <span class="setting-description">Requer reinicialização</span>
+              </div>
+              <label class="setting-toggle">
+                <input type="checkbox" id="settingHardwareAccel" checked>
+                <span class="toggle-slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="settings-actions">
+            <button id="settingsSave" class="settings-button primary">Salvar</button>
+            <button id="settingsReset" class="settings-button">Restaurar Padrões</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="torPanel" class="panel-view tor-panel">
+        <div class="panel-head">
+          <h1 data-i18n="menu.torMode">Modo Tor</h1>
+          <button id="closePanelTor" class="icon" type="button" title="Fechar"><span class="material-symbols-outlined">close</span></button>
+        </div>
+        <div class="tor-panel-body">
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Ativar Modo Tor</span>
+              <span class="setting-description">Roteia todo o tráfego de navegação pela rede Tor</span>
+            </div>
+            <label class="setting-toggle">
+              <input type="checkbox" id="torToggleSwitch">
+              <span class="toggle-slider"></span>
+            </label>
+          </div>
+          
+          <div class="tor-divider"></div>
+
+          <!-- Configuração de Pontes (Bridges) -->
+          <div class="setting-item">
+            <div class="setting-info">
+              <span class="setting-label">Pontes (Bridges / Pluggable Transports)</span>
+              <span class="setting-description">Use pontes para contornar a censura e bloqueios à rede Tor</span>
+            </div>
+            <select id="torBridgeType" class="setting-select">
+              <option value="none">Conexão Direta (Sem pontes)</option>
+              <option value="obfs4">obfs4 (Recomendado)</option>
+              <option value="snowflake">snowflake (Censura severa)</option>
+              <option value="meek-azure">meek-azure</option>
+              <option value="custom">Ponte personalizada...</option>
+            </select>
+          </div>
+          
+          <div id="torCustomBridgesContainer" class="setting-item-column" hidden>
+            <span class="setting-label">Linhas de ponte personalizada (uma por linha)</span>
+            <textarea id="torCustomBridges" class="setting-textarea" placeholder="Ex: obfs4 192.95.36.142:443 ..."></textarea>
+          </div>
+          
+          <div class="tor-divider"></div>
+          
+          <div class="tor-info-item">
+            <span class="label" data-i18n="tor.status">Status:</span>
+            <span id="torStatus" class="value">Desativado</span>
+          </div>
+          <div class="tor-info-item">
+            <span class="label" data-i18n="tor.ip">Seu IP:</span>
+            <span id="torIP" class="value">Detectando...</span>
+          </div>
+          <div class="tor-info-item">
+            <span class="label" data-i18n="tor.location">Localização:</span>
+            <span id="torLocation" class="value">-</span>
+          </div>
+          <div class="tor-info-item">
+            <span class="label" data-i18n="tor.circuit">Circuito:</span>
+            <span id="torCircuit" class="value">-</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <section id="homepage" class="homepage">
+      <div class="homepage-content">
+        <div class="homepage-logo">
+          <span class="mark-large">S</span>
+          <h1>sparta</h1>
+        </div>
+        <form id="homeSearch" class="home-search" spellcheck="false">
+          <input id="homeUrl" autocomplete="off" autocapitalize="off" data-i18n="browser.search" placeholder="buscar ou entrar" />
+          <button type="submit" class="search-button">
+            <span class="material-symbols-outlined">search</span>
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <script src="./i18n.js"></script>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
