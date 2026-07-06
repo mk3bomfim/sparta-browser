@@ -1,0 +1,93 @@
+{
+  "browser": {
+    "title": "SpartaBrowser",
+    "newTab": "New tab",
+    "search": "search or enter"
+  },
+  "navigation": {
+    "back": "Back",
+    "forward": "Forward",
+    "reload": "Reload",
+    "home": "Home"
+  },
+  "menu": {
+    "menu": "Menu",
+    "newTab": "New tab",
+    "closeTab": "Close tab",
+    "torMode": "Tor Mode",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "zoomReset": "Reset zoom",
+    "fullscreen": "Fullscreen",
+    "devTools": "Developer tools",
+    "settings": "Settings",
+    "newPrivateTab": "New private tab"
+  },
+  "settings": {
+    "title": "Settings",
+    "appearance": "Appearance",
+    "language": "Language",
+    "languageDesc": "Browser interface language",
+    "theme": "Theme",
+    "themeDesc": "Choose between light or dark theme",
+    "themeDark": "Dark",
+    "themeLight": "Light",
+    "privacy": "Privacy",
+    "clearOnExit": "Clear on exit",
+    "clearOnExitDesc": "Clears cache and history on browser close",
+    "dnt": "Do Not Track (DNT)",
+    "dntDesc": "Send DNT header in all requests",
+    "adBlock": "Ad Blocker (AdBlock)",
+    "adBlockDesc": "Block ads and known third-party trackers",
+    "searchEngine": "Search Engine",
+    "searchEngineDefault": "Default",
+    "searchEngineDesc": "Engine used in address bar",
+    "tor": "Tor",
+    "torPort": "SOCKS Port",
+    "torPortDesc": "Local Tor proxy port (default: 9150)",
+    "advanced": "Advanced",
+    "hardwareAccel": "Hardware Acceleration",
+    "hardwareAccelDesc": "Requires restart",
+    "save": "Save",
+    "reset": "Restore Defaults",
+    "resetConfirm": "Restore all settings to default values?"
+  },
+  "history": {
+    "title": "History",
+    "empty": "No history in this session",
+    "clearAll": "Clear All",
+    "delete": "Remove from history"
+  },
+  "bookmarks": {
+    "title": "Bookmarks",
+    "panelTitle": "Bookmarks",
+    "empty": "No bookmarks added",
+    "delete": "Remove from bookmarks"
+  },
+  "downloads": {
+    "title": "Downloads",
+    "empty": "No downloads in this session",
+    "completed": "Completed",
+    "downloading": "Downloading",
+    "cancelled": "Cancelled",
+    "waiting": "Waiting"
+  },
+  "tor": {
+    "disabled": "Disabled",
+    "connecting": "Connecting...",
+    "connected": "Connected",
+    "status": "Status",
+    "ip": "Your IP",
+    "location": "Location",
+    "circuit": "Circuit",
+    "notFound": "Tor not found. Run: npm run download-tor",
+    "ready": "Tor connected!",
+    "error": "Error starting Tor"
+  },
+  "window": {
+    "minimize": "Minimize",
+    "maximize": "Maximize",
+    "close": "Close",
+    "clearSession": "Clear session"
+  }
+}
